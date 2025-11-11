@@ -1,4 +1,4 @@
-from test_potenciaguaymas import potencia
+from funciones.potencia_guaymas import potencia
 
 def test_potencia(): 
   assert potencia(2, 3) == 8 
