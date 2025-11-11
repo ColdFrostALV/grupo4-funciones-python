@@ -1,28 +1,27 @@
-name: Pruebas automáticas del grupo
+name: Pruebas automáticas del grupo 
+ 
+on: 
+  push: 
+    branches: 
+      - main 
+      - '*' 
+ 
+jobs: 
+  test: 
+    runs-on: ubuntu-latest 
+    steps: 
+      - name: Clonar el repositorio 
+        uses: actions/checkout@v3 
+ 
+      - name: Configurar Python 
+        uses: actions/setup-python@v4 
+        with: 
+          python-version: '3.10' 
+ 
+      - name: Instalar dependencias 
+        run: |  
+	  pip install pytest
 
-on:
-  # Define los eventos que disparan el flujo de trabajo
-  push:
-    branches:
-      - main
-      - '*' # Ejecuta en 'main' y cualquier otra rama
-
-jobs:
-  test: # <-- 'test' debe estar indentado bajo 'jobs'
-    runs-on: ubuntu-latest # <-- 'runs-on' debe estar indentado bajo 'test'
-    steps: # <-- 'steps' debe estar indentado bajo 'test'
-      - name: Clonar el repositorio
-        uses: actions/checkout@v3
-
-      - name: Configurar Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10' # (Esto estaba correcto, sin espacio antes de :)
-
-      - name: Instalar dependencias # <-- Corregido: 'Instalar'
-        run: |
-          pip install pytest
-
-      - name: Ejecutar pruebas
-        run: |
-          pytest -v
+      - name: Ejecutar pruebas 
+	run: | 
+	  pytest -v 
